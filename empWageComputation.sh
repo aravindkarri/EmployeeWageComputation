@@ -10,14 +10,15 @@ IS_PART_TIME=2
 empWagePerHr=20
 empCheck=$((RANDOM%3))
 
-if [ $empCheck -eq $IS_FULL_TIME ]
-then
-	empHrs=8
-
-elif [ $empCheck -eq $IS_PART_TIME ]
-then
-	empHrs=4
-else
-	empHrs=0
-fi
+case $empCheck in
+	$IS_FULL_TIME)
+		empHrs=8
+		;;
+	$IS_PART_TIME)
+		empHrs=4
+		;;
+	*)
+		empHrs=0
+		;;
+esac
 salary=$(($empHrs * $empWagePerHr))
